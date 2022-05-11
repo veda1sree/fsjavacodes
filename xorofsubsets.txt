@@ -1,0 +1,28 @@
+Sum of All Subset XOR Totals
+________________________
+class Solution {
+    public int subsetXORSum(int[] nums) {
+        int temp[]=new int[nums.length];
+        int res=check(nums,nums.length,0,temp,0);
+        return res;
+    }
+    static int  check(int []a,int n,int i,
+	int temp[],int size)
+	{
+	 int cnt1=0,cnt2=0;   
+	    if(i==n)
+	    {
+	        int cnt=0;
+	        for(int is=0;is<size;is++)
+	        {
+	           cnt^=(temp[is]);
+	        }
+	     
+	        return cnt;
+	    }
+	   temp[size]=a[i];
+	cnt1=cnt1+check(a,n,i+1,temp,size+1);
+	   cnt2=cnt2+check(a,n,i+1,temp,size);
+        return cnt1+cnt2;
+	}
+}

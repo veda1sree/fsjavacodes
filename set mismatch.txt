@@ -1,0 +1,25 @@
+645. Set Mismatch
+_______________
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+          int k[]=new int[2];
+        int j=0;
+        while(j<nums.length){
+            int c=nums[j]-1;
+            if(nums[c]!=nums[j]){swap(nums,j,c);}
+            else{j++;}
+        }
+        for(int i=0;i<nums.length;i++){
+           if(nums[i]!=i+1){
+               k[0]=nums[i];
+               k[1]=i+1;
+           } 
+        }
+        return k;
+    }
+    static void swap(int nums[],int i,int j){
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
+    }
+}
